@@ -22,13 +22,12 @@ const Blog = ({ title, description, imageUrl, userName, isUser, id }) => {
   };
 
   const handleDelete = () => {
-    deleteRequest()
-      .then(() => navigate("/"))
-      .then(() => navigate("/blogs"));
+    deleteRequest().then(() => navigate("/myBlogs"));
   };
+
   return (
     <>
-      <div className="w-96 bg-slate-50 shadow-xl mt-[80px]">
+      <div className="w-96 bg-slate-50 shadow-xl p-4">
         <figure className="flex justify-center p-2">
           <img src={imageUrl} className="w-[350px] h-[300px]" alt="Shoes" />
         </figure>
@@ -42,8 +41,11 @@ const Blog = ({ title, description, imageUrl, userName, isUser, id }) => {
         <div className="px-4 pb-4">
           {isUser && (
             <div className="flex justify-end space-x-4">
-              <FiEdit className="text-xl" onClick={handleEdit} />
-              <MdDelete className="text-xl" onClick={handleDelete} />
+              <FiEdit className="text-xl cursor-pointer" onClick={handleEdit} />
+              <MdDelete
+                className="text-xl cursor-pointer"
+                onClick={handleDelete}
+              />
             </div>
           )}
           <h2 className="text-2xl font-semibold mb-2">{title}</h2>

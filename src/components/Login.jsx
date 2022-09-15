@@ -12,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -38,12 +39,40 @@ const Login = () => {
     e.preventDefault();
     console.log(inputs);
     sendRequest()
-      .then((data) => localStorage.setItem("userId", data.user._id))
-      .then(() => dispatch(authActions.login()))
-      .then(() => navigate("/"));
+      .then((data) => {
+        localStorage.setItem("userId", data.user._id);
+        dispatch(authActions.login());
+        navigate("/");
+      })
+
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+        setInputs({
+          name: "",
+          email: "",
+          password: "",
+        });
+      });
   };
+
+  setTimeout(() => {
+    setError(false);
+  }, 5000);
+
   return (
-    <div className="flex items-center justify-center w-full ">
+    <div className="flex  items-center justify-center w-full ">
+      {error && (
+        <div className="toast toast-top toast-end">
+          <div className="alert bg-red-500">
+            <div>
+              <span className="text-white">
+                Something went wrong. Please try again
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
         className="flex flex-col bg-zinc-50 space-y-4 md:shadow-lg mt-[120px] p-8 md:p-16"

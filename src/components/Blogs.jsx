@@ -21,10 +21,11 @@ const Blogs = () => {
   console.log(blogs);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4 ">
+    <div className="flex flex-wrap justify-center gap-4 pt-[80px]">
       {blogs &&
         blogs.map((blog, index) => (
           <Blog
+            id={blog._id}
             isUser={localStorage.getItem("userId") === blog.user._id}
             key={index}
             title={blog.title}

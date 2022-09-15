@@ -20,7 +20,7 @@ const UserBlogs = () => {
   console.log("user blogs", user);
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center p-4">
+    <div className="flex flex-wrap gap-4 justify-center pt-[80px]">
       {user &&
         user.blogs &&
         user.blogs.map((blog, index) => (

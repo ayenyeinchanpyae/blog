@@ -34,7 +34,7 @@ const Header = () => {
 
           <ul className="hidden md:flex gap-8 p-6 uppercase bg-white/10">
             <li>
-              <Link to="/">All Blogs</Link>
+              <Link to="/blogs">All Blogs</Link>
             </li>
             {isLoggedIn ? (
               <>
@@ -46,7 +46,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/login">
-                    <button onClick={logout}>Logout</button>
+                    <button className="mr-[100px]" onClick={logout}>
+                      Log Out
+                    </button>
                   </Link>
                 </li>
               </>

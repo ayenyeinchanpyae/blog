@@ -63,10 +63,10 @@ const BlogDetails = () => {
       {inputs && (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col space-y-4 md:shadow-lg  mt-[50px] p-8 md:w-[50%] border-solid border-2 border-sky-300 rounded-[20px]"
+          className="flex flex-col space-y-4 md:shadow-lg  mt-[150px] p-8 md:w-[50%]  bg-zinc-50"
         >
           <p className="text-center mb-4 text-3xl font-semibold">
-            Add a new blog
+            Update your blog
           </p>
           <div className="flex flex-col space-y-4">
             <div className="">
@@ -123,7 +123,7 @@ const BlogDetails = () => {
           </div>
           <div className="flex justify-end mt-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-cyan-700 hover:bg-cyan-500 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Update
