@@ -21,7 +21,7 @@ const Header = () => {
     <>
       <div className="fixed w-full h-[60px] bg-slate-100 text-cyan-800 flex justify-between p-4 items-center">
         <div className="text-2xl ml-[100px] font-bold text-center uppercase">
-          <Link to="/">Glowio</Link>
+          <Link to="/">Crafter</Link>
         </div>
 
         <nav>
