@@ -22,7 +22,7 @@ const Login = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:5000/api/user/login", {
+      .post("https://blog-api-6og8.onrender.com/api/user/login", {
         email: inputs.email,
         password: inputs.password,
         name: inputs.name,

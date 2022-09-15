@@ -22,7 +22,7 @@ const Signup = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:5000/api/user/signup", {
+      .post("https://blog-api-6og8.onrender.com/api/user/signup", {
         email: inputs.email,
         password: inputs.password,
         name: inputs.name,

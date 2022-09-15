@@ -8,7 +8,7 @@ const UserBlogs = () => {
   console.log("id", id);
   const sendRequest = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/blog/user/${id}`)
+      .get(`https://blog-api-6og8.onrender.com/api/blog/user/${id}`)
       .catch((error) => console.log(error));
     const data = await res.data;
     console.log("data", data);
