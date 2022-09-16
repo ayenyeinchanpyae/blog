@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Blog from "./Blog";
-
+import Layout from "./Layout";
 const UserBlogs = () => {
   const [user, setUser] = useState();
   const id = localStorage.getItem("userId");
@@ -20,21 +20,23 @@ const UserBlogs = () => {
   console.log("user blogs", user);
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center pt-[80px]">
-      {user &&
-        user.blogs &&
-        user.blogs.map((blog, index) => (
-          <Blog
-            id={blog._id}
-            isUser={true}
-            key={index}
-            title={blog.title}
-            description={blog.description}
-            imageUrl={blog.image}
-            userName={blog.user.name}
-          />
-        ))}
-    </div>
+    <Layout>
+      <div className="flex flex-wrap gap-4 justify-center pt-[80px]">
+        {user &&
+          user.blogs &&
+          user.blogs.map((blog, index) => (
+            <Blog
+              id={blog._id}
+              isUser={true}
+              key={index}
+              title={blog.title}
+              description={blog.description}
+              imageUrl={blog.image}
+              userName={blog.user.name}
+            />
+          ))}
+      </div>
+    </Layout>
   );
 };
 

@@ -17,17 +17,17 @@ const MenuItems = ({ showMenu, active, logout }) => {
       </li> */}
       {isLoggedIn ? (
         <>
-          <li>
+          <li className="hover:underline">
             <Link to="/myBlogs" onClick={showMenu}>
               My Blogs
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             <Link to="/blogs/add" onClick={showMenu}>
               Add
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             <Link to="/login">
               <button onClick={logout && showMenu}>Logout</button>
             </Link>
@@ -35,12 +35,12 @@ const MenuItems = ({ showMenu, active, logout }) => {
         </>
       ) : (
         <>
-          <li>
+          <li className="hover:underline">
             <Link to="/login" onClick={showMenu}>
               Log In
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             <Link to="/signup" onClick={showMenu}>
               Sign Up
             </Link>

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
-const BlogDetails = () => {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout";
+const AddBlog = () => {
   const navigate = useNavigate();
-  const [blog, setBlog] = useState();
-  const id = useParams().id;
-  const [inputs, setInputs] = useState({});
-  console.log(id);
+  const [inputs, setInputs] = useState({
+    title: "",
+    description: "",
+    imageURL: "",
+  });
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -16,57 +17,34 @@ const BlogDetails = () => {
     }));
   };
 
-  const fetchDetails = async () => {
-    const res = await axios
-      .get(`https://blog-api-6og8.onrender.com/api/blog/${id}`)
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    return data;
-  };
-
-  useEffect(() => {
-    fetchDetails().then((data) => {
-      setBlog(data.blog);
-      setInputs({
-        title: data.blog.title,
-        description: data.blog.description,
-        imageURL: data.blog.image,
-      });
-    });
-  }, [id]);
-
-  console.log(blog);
-
   const sendRequest = async () => {
     const res = await axios
-      .put(`https://blog-api-6og8.onrender.com/api/blog/update/${id}`, {
+      .post("https://blog-api-6og8.onrender.com/api/blog/add", {
         title: inputs.title,
         description: inputs.description,
         image: inputs.imageURL,
+        user: localStorage.getItem("userId"),
       })
-      .catch((err) => console.log(err));
-
+      .catch((error) => console.log(error));
     const data = await res.data;
     return data;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
     sendRequest()
       .then((data) => console.log(data))
-      .then(() => navigate("/myBlogs/"));
+      .then(() => navigate("/myBlogs"));
   };
-
   return (
-    <div className="flex items-center justify-center w-full">
-      {inputs && (
+    <Layout>
+      <div className="flex items-center justify-center w-full">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col space-y-4 md:shadow-lg  mt-[150px] p-8 md:w-[50%]  bg-zinc-50"
+          className="flex flex-col space-y-4 md:shadow-lg  mt-[100px] p-8 md:w-[50%]  bg-zinc-50"
         >
           <p className="text-center mb-4 text-3xl font-semibold">
-            Update your blog
+            Add a new blog
           </p>
           <div className="flex flex-col space-y-4">
             <div className="">
@@ -126,13 +104,13 @@ const BlogDetails = () => {
               className="bg-cyan-700 hover:bg-cyan-500 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Update
+              Add
             </button>
           </div>
         </form>
-      )}
-    </div>
+      </div>
+    </Layout>
   );
 };
 
-export default BlogDetails;
+export default AddBlog;

@@ -1,11 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
-import Login from "./components/Login";
-import Signup from "./components/Singup";
-import Blogs from "./components/Blogs";
+import Login from "./pages/Login";
+import Signup from "./pages/Singup";
+import Blogs from "./pages/Blogs";
 import UserBlogs from "./components/UserBlogs";
-import BlogDetails from "./components/BlogDetails";
-import AddBlog from "./components/AddBlog";
+import BlogDetails from "./pages/BlogDetails";
+import AddBlog from "./pages/AddBlog";
 import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 
@@ -14,7 +13,6 @@ function App() {
   console.log("is login ", isLoginIn);
   return (
     <>
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
