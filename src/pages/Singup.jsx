@@ -40,7 +40,10 @@ const Signup = () => {
     console.log(inputs);
 
     sendRequest()
-      .then((data) => localStorage.setItem("userId", data.user._id))
+      .then((data) => {
+        console.log("data", data);
+        localStorage.setItem("userId", data._id);
+      })
       .then(() => dispatch(authActions.login()))
       .then(() => navigate("/"))
       .catch((error) => {
@@ -59,7 +62,7 @@ const Signup = () => {
   return (
     <Layout>
       <div className="flex items-center justify-center w-full">
-        {error && (
+        {/* {error && (
           <div className="toast toast-top toast-end mt-[100px]">
             <div className="alert bg-red-500">
               <div>
@@ -69,7 +72,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col bg-zinc-50 space-y-4 md:shadow-lg mt-[100px] p-8 md:py-6 md:px-8"

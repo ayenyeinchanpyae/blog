@@ -19,7 +19,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="fixed w-full h-[60px]  text-cyan-600 flex justify-between p-4 items-center">
+      <div className="fixed w-full h-[60px]  text-slate-600 flex justify-between p-4 items-center shadow-sm">
         <div className="text-2xl ml-[100px] font-bold text-center uppercase">
           <Link to="/">Crafter</Link>
         </div>
@@ -34,7 +34,7 @@ const Header = () => {
 
           <ul className="hidden md:flex gap-8 p-6 uppercase bg-white/10">
             <li className="hover:underline">
-              <Link to="/blogs">All Blogs</Link>
+              <Link to="/">All Blogs</Link>
             </li>
             {isLoggedIn ? (
               <>
